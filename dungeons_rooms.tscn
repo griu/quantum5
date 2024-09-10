@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8by8paliirsr"]
+
+[ext_resource type="Script" path="res://door2.0.gd" id="1_j078j"]
+[ext_resource type="PackedScene" uid="uid://bkpbbsxksb60l" path="res://tile_map.tscn" id="1_m4rha"]
+[ext_resource type="PackedScene" uid="uid://l8iwx8ybuxek" path="res://jugador.tscn" id="2_83xjv"]
+[ext_resource type="PackedScene" uid="uid://cqljceed0ynev" path="res://door_2_0.tscn" id="2_ofbhe"]
+[ext_resource type="PackedScene" uid="uid://dqanl1vyvulkb" path="res://room_entry.tscn" id="4_361oq"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_j078j")
+
+[node name="TileMap" parent="." instance=ExtResource("1_m4rha")]
+layer_0/tile_data = PackedInt32Array(262147, 524289, 2, 196612, 589825, 1, 262148, 589825, 2, 327684, 131073, 3, 196613, 393217, 1, 262149, 393217, 2, 327685, 196609, 3, 196614, 458753, 1, 262150, 458753, 2, 327686, 131073, 4, 196615, 524289, 1, 262151, 524289, 2, 327687, 196609, 4, 196616, 589825, 1, 262152, 589825, 2, 327688, 262145, 4, 196617, 327681, 2, 262153, 327681, 3, 327689, 327681, 4, 262144, 1, 3, 262145, 393217, 2, 262146, 458753, 2, 131077, 393217, 0, 131078, 458753, 0, 131079, 524289, 0, 131080, 589825, 0, 131073, 393217, 0, 196609, 393217, 1, 131074, 458753, 0, 196610, 458753, 1, 131075, 524289, 0, 196611, 524289, 1, 131076, 589825, 0, -65535, 393217, 0, 1, 393217, 1, 65537, 393217, 2, -65534, 458753, 0, 2, 458753, 1, 65538, 458753, 2, -65533, 524289, 0, 3, 524289, 1, 65539, 524289, 2, -65532, 589825, 0, 4, 589825, 1, 65540, 589825, 2, -65531, 393217, 0, 5, 393217, 1, 65541, 393217, 2, -65530, 458753, 0, 6, 458753, 1, 65542, 458753, 2, -65529, 524289, 0, 7, 524289, 1, 65543, 524289, 2, -65528, 589825, 0, 8, 589825, 1, 65544, 589825, 2, -131071, 65537, 0, -131070, 131073, 0, -131069, 196609, 0, -131066, 131073, 0, -131065, 196609, 0, -131064, 262145, 0, -131063, 327681, 0, -65527, 327681, 1, 9, 327681, 2, 65545, 327681, 3, -131072, 1, 0, -65536, 1, 1, 0, 1, 2, 65536, 1, 0, 131072, 1, 1, 196608, 1, 2, 131081, 327681, 1, 327680, 1, 4, 327681, 65537, 4, 327682, 131073, 4, 327683, 196609, 4, -131068, 131073, 1, -131067, 196609, 1)
+layer_1/tile_data = PackedInt32Array()
+layer_2/tile_data = PackedInt32Array()
+layer_4/tile_data = PackedInt32Array()
+
+[node name="jugador" parent="." instance=ExtResource("2_83xjv")]
+position = Vector2(632, 0)
+
+[node name="Camera2D" type="Camera2D" parent="jugador"]
+position = Vector2(8, -192)
+
+[node name="Area2D" parent="." instance=ExtResource("4_361oq")]
+position = Vector2(632, -112)
+scale = Vector2(50, 1)
+
+[node name="door2_0" parent="." instance=ExtResource("2_ofbhe")]
+
+[connection signal="body_exited" from="Area2D" to="jugador" method="_on_area_2d_body_exited"]

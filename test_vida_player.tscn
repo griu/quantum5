@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ohecbg76ee31"]
+
+[ext_resource type="PackedScene" uid="uid://p0tcifvas40g" path="res://jugador2.0.tscn" id="1_m8xwo"]
+[ext_resource type="Texture2D" uid="uid://hhqeuoxnvjdg" path="res://icon.svg" id="2_w2bij"]
+[ext_resource type="AudioStream" uid="uid://glt0qt4rnbon" path="res://villager-made-with-Voicemod.ogg" id="3_6rdu0"]
+[ext_resource type="PackedScene" uid="uid://5pr7xqxstlqm" path="res://enemy.tscn" id="3_iupbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukss8"]
+size = Vector2(128, 128)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="spr_enemy" type="Sprite2D" parent="."]
+position = Vector2(704, 192)
+texture = ExtResource("2_w2bij")
+metadata/_edit_group_ = true
+
+[node name="area_enemy" type="Area2D" parent="spr_enemy"]
+
+[node name="coll_area_enemy" type="CollisionShape2D" parent="spr_enemy/area_enemy"]
+shape = SubResource("RectangleShape2D_ukss8")
+
+[node name="jugador" parent="." instance=ExtResource("1_m8xwo")]
+
+[node name="Aud_gameover" parent="jugador" index="5"]
+stream = ExtResource("3_6rdu0")
+
+[node name="enemy" parent="." instance=ExtResource("3_iupbh")]
+
+[connection signal="body_entered" from="spr_enemy/area_enemy" to="jugador" method="_on_area_enemy_body_entered"]
+
+[editable path="jugador"]

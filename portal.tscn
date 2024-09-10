@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3n3nnj6kwryi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aidca"]
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["next_room"]]
+shape = SubResource("RectangleShape2D_aidca")
