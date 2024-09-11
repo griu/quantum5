@@ -1224,7 +1224,6 @@ animation = &"idle_down"
 
 [node name="Coll_jugador" type="CollisionShape2D" parent="."]
 position = Vector2(3.75, 20)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_yn8m3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
