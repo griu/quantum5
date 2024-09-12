@@ -14,6 +14,7 @@ size = Vector2(134, 132)
 [node name="enemy" parent="." instance=ExtResource("2_hurb5")]
 position = Vector2(361, 314)
 scale = Vector2(3, 3)
+speed = 0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

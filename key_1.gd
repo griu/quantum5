@@ -4,16 +4,12 @@ var door_name : String = "door_1"
 
 
 func _ready():
-	print(self.name)
+	self.position += Global.size_block * Vector2(Global.key_x, Global.key_y)
+	print(self.position)
 	
-
-
-
-#func _on_area_key_body_entered(_body):
-	
-
 
 func _on_area_key_body_entered(_body):
-	Global.keys_founded.append(door_name)
-	queue_free()
+	if _body.is_in_group("jugador"):
+		Global.keys_founded.append(door_name)
+		queue_free()
 	

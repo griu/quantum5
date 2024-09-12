@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5pr7xqxstlqm"]
+[gd_scene load_steps=11 format=3 uid="uid://5pr7xqxstlqm"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_ocuan"]
 [ext_resource type="Texture2D" uid="uid://c2dpq87qyttl4" path="res://2D Pixel Dungeon Asset Pack/Character_animation/monsters_idle/skeleton2/v2/skeleton2_v2_2.png" id="1_tk8kt"]
@@ -20,11 +20,19 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_peqxb"]
 size = Vector2(11, 14.9)
+
+[sub_resource type="Animation" id="Animation_e18xc"]
+resource_name = "hited"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_shnpn"]
+_data = {
+"hited": SubResource("Animation_e18xc")
+}
 
 [node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(302, 375)
@@ -33,6 +41,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 floor_block_on_wall = false
 script = ExtResource("1_ocuan")
+speed = 70
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.4, 1.7)
@@ -41,7 +50,7 @@ shape = SubResource("CircleShape2D_4wk6w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ucyp8")
-frame_progress = 0.892277
+frame_progress = 0.0530271
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -64,5 +73,10 @@ stream = ExtResource("5_jdo2c")
 
 [node name="villager_sad" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_jdo2c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_shnpn")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

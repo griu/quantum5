@@ -9,6 +9,8 @@ var last_move : String = ""
 var is_atacking : bool = false 
 var last_atack = Vector2()
 var game_over : bool = false
+var player_position
+
 @export var player_health : float = 3.0
 @export var enemy_health : float = 3.0
 @export var is_human : bool = true #per activar la IA
@@ -40,7 +42,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 #func _on_area_enemy_body_entered(body):
 func _on_area_2d_2_body_entered(_body):
-	if _body.is_in_group("enemy"):
+	if _body.is_in_group("enemy") and not _body.disabled_enemy:
 		$Aud_hit.play()
 		player_health -= 1
 		$AnimationPlayer.play("hit_2")
@@ -50,24 +52,25 @@ func _on_area_2d_2_body_entered(_body):
 			await $Aud_hit.finished
 			$Aud_gameover.play()
 			await $Aud_gameover.finished
+			Global.reset_game = true
 			get_tree().reload_current_scene()
 		print("el jugador té " + str(player_health) + (" vides" if player_health > 1 else " vida"))
 	
 func _on_area_jugador_body_entered(_body):
 	print(_body.name)
 	if _body.is_in_group("enemy"):
+		_body.enemy_health -= 1
+		print(_body.enemy_health)
 
-		var body_name = _body.name
-		if body_name not in Global.enemys:
-			Global.enemys[body_name] = enemy_health - 1
-		else:
-			Global.enemys[body_name] -= 1
-		print(Global.enemys[body_name])
+		#var body_name = _body.name
+		#if body_name not in Global.enemys:
+			#Global.enemys[body_name] = enemy_health - 1
+		#else:
+			#Global.enemys[body_name] -= 1
+		#print(Global.enemys[body_name])
 
 func _ready():
-	print(1)
 	$AnimatedSprite2D.play("idle_down")
-	print(2)
 	last_move = "down"
 
 func _physics_process(delta):
@@ -160,9 +163,21 @@ func _physics_process(delta):
 		if is_sprinting:
 			movement *= 2 # velocitat * 2
 	
+	if player_health == 3:
+		$CanvasLayer/animspr_health.play("3_cors")
+	elif player_health == 2:
+		$CanvasLayer/animspr_health.play("2_cors")
+	elif player_health == 1:
+		$CanvasLayer/animspr_health.play("1_cor")
+	elif player_health <= 0:
+		$CanvasLayer/animspr_health.play("0_cors")
 	
 	
 		
 	move_and_collide(movement * delta)
 	#move_and_slide()
 	
+
+
+func _on_area_door_body_entered(body):
+	pass # Replace with function body.
