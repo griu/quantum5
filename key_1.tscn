@@ -7,7 +7,7 @@
 size = Vector2(88, 64)
 
 [node name="key_1" type="Node2D"]
-position = Vector2(1280, 576)
+position = Vector2(320, 224)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_5nclw")
 metadata/_edit_group_ = true

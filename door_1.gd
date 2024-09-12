@@ -7,6 +7,7 @@ func _on_area_door_body_entered(_body):
 		$AnimationPlayer.play("door_unblocked")
 		await $AnimationPlayer.animation_finished
 		Global.is_open_door += [self.name]
+		Global.reset_game = true
 		queue_free()
 		
 	else:
@@ -14,3 +15,6 @@ func _on_area_door_body_entered(_body):
 	
 	
 	
+
+
+
