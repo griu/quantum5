@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://p0tcifvas40g"]
+[gd_scene load_steps=111 format=3 uid="uid://p0tcifvas40g"]
 
 [ext_resource type="Script" path="res://jugador.gd" id="1_2em8b"]
 [ext_resource type="Texture2D" uid="uid://c2gyo1e5yfrq1" path="res://Characters/Knight1_Attack.png" id="2_uv1on"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://brpc66urycn3x" path="res://sprites quantum/tileset.png" id="8_xn3yy"]
 [ext_resource type="Texture2D" uid="uid://dyagc5ned7dxd" path="res://cors2.png" id="9_gj5b2"]
 [ext_resource type="Texture2D" uid="uid://bs0isbvuru1hx" path="res://cors.png" id="10_0m5nd"]
+[ext_resource type="Script" path="res://AIController2D.gd" id="12_6ndlx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwi2s"]
 atlas = ExtResource("2_uv1on")
@@ -1314,6 +1315,9 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4ei1v")
 animation = &"0_cors"
 centered = false
+
+[node name="AIController2D" type="Node2D" parent="."]
+script = ExtResource("12_6ndlx")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_jugador_body_entered"]

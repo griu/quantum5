@@ -14,7 +14,9 @@ var player_position
 @export var player_health : float = 3.0
 @export var enemy_health : float = 3.0
 @export var is_human : bool = true #per activar la IA
-@onready var ai_controller_2d: Node2D = $AIController2D2
+@onready var ai_controller_2d: Node2D = $AIController2D
+
+
 
 #recompenses IA
 
@@ -24,14 +26,13 @@ func _on_area_key_1_body_entered(_body):
 
 func _on_area_door_1_body_entered(_body):
 	position = Vector2(1024.0, 576.0)
-	if "door_1" in Global.is_open_door:
+	if "door_1" in Global.keys_founded:
 		ai_controller_2d.reward += 1.0
+		ai_controller_2d.reset()
 	else:
 		ai_controller_2d.reward -= 1.0
-		
-	position = Vector2(1024.0, 576.0)
-	ai_controller_2d.reward -= 1.0
-	ai_controller_2d.reset()
+
+
 
 
 func _on_animated_sprite_2d_animation_finished(): 
@@ -53,15 +54,20 @@ func _on_area_2d_2_body_entered(_body):
 			$Aud_gameover.play()
 			await $Aud_gameover.finished
 			Global.reset_game = true
-			get_tree().reload_current_scene()
+			#get_tree().reload_current_scene()
 		print("el jugador té " + str(player_health) + (" vides" if player_health > 1 else " vida"))
 	
 func _on_area_jugador_body_entered(_body):
 	print(_body.name)
 	if _body.is_in_group("enemy"):
 		_body.enemy_health -= 1
+		ai_controller_2d.reward -= 1.0
 		print(_body.enemy_health)
 
+	if _body.is_in_group("tile_map"):
+		ai_controller_2d.reward -= 1.0
+
+	
 		#var body_name = _body.name
 		#if body_name not in Global.enemys:
 			#Global.enemys[body_name] = enemy_health - 1
@@ -178,6 +184,3 @@ func _physics_process(delta):
 	#move_and_slide()
 	
 
-
-func _on_area_door_body_entered(body):
-	pass # Replace with function body.

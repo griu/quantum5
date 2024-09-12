@@ -26,6 +26,7 @@ shape = SubResource("RectangleShape2D_ukss8")
 stream = ExtResource("3_6rdu0")
 
 [node name="enemy" parent="." instance=ExtResource("3_iupbh")]
+speed = 1
 
 [connection signal="body_entered" from="spr_enemy/area_enemy" to="jugador" method="_on_area_enemy_body_entered"]
 

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var enemy_health : float = 3
-@export var speed = 30
+@export var speed = 1
 var disabled_enemy : bool = false
 
 
@@ -9,7 +9,7 @@ var disabled_enemy : bool = false
 @onready var nav_agent = $NavigationAgent2D as NavigationAgent2D
 
 
-func _process(delta):
+func _process(_delta):
 	#if self.name in Global.enemys and Global.enemys[self.name] <= 0:
 	if self.enemy_health <= 0:
 		disabled_enemy = true
