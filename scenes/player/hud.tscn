@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bueg2ecsolu6"]
+
+[ext_resource type="Texture2D" uid="uid://drpg1pninslcf" path="res://assets/sprites quantum/cor1.png" id="1_fosft"]
+[ext_resource type="Texture2D" uid="uid://dyagc5ned7dxd" path="res://assets/sprites quantum/cors2.png" id="2_xew3q"]
+[ext_resource type="Texture2D" uid="uid://bs0isbvuru1hx" path="res://assets/sprites quantum/cors.png" id="3_weaix"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j64bn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fosft")
+}],
+"loop": true,
+"name": &"1 cor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xew3q")
+}],
+"loop": true,
+"name": &"2 cors",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_weaix")
+}],
+"loop": true,
+"name": &"3 cors",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3.8147e-06, 1.90735e-06)
+scale = Vector2(2.375, 2.375)
+sprite_frames = SubResource("SpriteFrames_j64bn")
+animation = &"3 cors"

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyb46464dk7oy"]
+
+[ext_resource type="PackedScene" uid="uid://cfdaxpdkj5p7p" path="res://scenes/door/door_1.tscn" id="3_10ui7"]
+[ext_resource type="PackedScene" uid="uid://4rjxeciyeap1" path="res://scenes/key/key_1.tscn" id="4_060q2"]
+[ext_resource type="PackedScene" uid="uid://p0tcifvas40g" path="res://scenes/player/jugador2.0.tscn" id="5_v0p62"]
+[ext_resource type="PackedScene" uid="uid://5pr7xqxstlqm" path="res://scenes/enemy/enemy.tscn" id="6_4gbfl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="door_1" parent="." instance=ExtResource("3_10ui7")]
+position = Vector2(608, 176)
+metadata/_edit_group_ = true
+
+[node name="key_1" parent="." groups=["key"] instance=ExtResource("4_060q2")]
+position = Vector2(336, 232)
+
+[node name="jugador" parent="." instance=ExtResource("5_v0p62")]
+position = Vector2(616, 488)
+
+[node name="Camera2D" type="Camera2D" parent="jugador"]
+position = Vector2(7.62939e-06, -3.05176e-05)
+scale = Vector2(2.5, 2.5)
+zoom = Vector2(1.53, 1.53)
+
+[node name="enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_4gbfl")]
+position = Vector2(536, 224)
+scale = Vector2(3, 3)
+player = NodePath("../jugador")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="enemy" index="0"]
+process_mode = 4
+
+[connection signal="body_entered" from="door_1/area_door" to="jugador" method="_on_area_door_body_entered"]
+[connection signal="body_entered" from="jugador/Area2D" to="door_1" method="_on_area_2d_body_entered"]
+
+[editable path="door_1"]
+[editable path="jugador"]
+[editable path="enemy"]

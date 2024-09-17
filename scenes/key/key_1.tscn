@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://4rjxeciyeap1"]
+
+[ext_resource type="Script" path="res://scenes/key/key_1.gd" id="1_jl551"]
+[ext_resource type="Texture2D" uid="uid://dd3j300d2ejcw" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/keys/keys_1_1.png" id="2_u2xnn"]
+[ext_resource type="Texture2D" uid="uid://brpc66urycn3x" path="res://assets/sprites quantum/tileset.png" id="3_ydxtd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjf4w"]
+atlas = ExtResource("3_ydxtd")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avv1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u2xnn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjf4w")
+}],
+"loop": true,
+"name": &"key_collected",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fprqt"]
+size = Vector2(88, 64)
+
+[node name="key_1" type="Node2D"]
+position = Vector2(320, 224)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_jl551")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-60, -48)
+scale = Vector2(7.5, 6.66545)
+sprite_frames = SubResource("SpriteFrames_avv1a")
+centered = false
+
+[node name="area_key" type="Area2D" parent="."]
+
+[node name="coll_area_key" type="CollisionShape2D" parent="area_key"]
+position = Vector2(4, 8)
+shape = SubResource("RectangleShape2D_fprqt")
+
+[connection signal="area_entered" from="area_key" to="." method="_on_area_key_area_entered"]
+[connection signal="body_entered" from="area_key" to="." method="_on_area_key_body_entered"]

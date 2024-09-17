@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkpbbsxksb60l"]
+
+[ext_resource type="TileSet" uid="uid://r1llegil5v11" path="res://scenes/map/tile_map_1.tres" id="1_wm8m8"]
+
+[node name="TileMap" type="TileMap"]
+texture_filter = 1
+tile_set = ExtResource("1_wm8m8")
+format = 2
+layer_0/name = "ground"

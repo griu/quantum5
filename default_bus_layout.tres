@@ -1,9 +1,0 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://waw35n7qaosu"]
-
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_lqwyg"]
-resource_name = "Reverb"
-
-[resource]
-bus/0/volume_db = 0.862736
-bus/0/effect/0/effect = SubResource("AudioEffectReverb_lqwyg")
-bus/0/effect/0/enabled = false
