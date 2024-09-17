@@ -100,7 +100,7 @@ func _ready():
 func _physics_process(delta):
 	var movement := Vector2() #moviment 2d
 	if game_over == false:
-		if ai_controller_2d.heuristic == "human":
+		if is_human: 
 			if not is_atacking: 
 				#es defineix en quina direcció es el moviment
 				if Input.is_action_pressed("right") and Input.is_action_pressed("down"):
