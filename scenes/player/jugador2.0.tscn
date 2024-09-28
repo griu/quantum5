@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://p0tcifvas40g"]
+[gd_scene load_steps=112 format=3 uid="uid://p0tcifvas40g"]
 
 [ext_resource type="Script" path="res://scenes/player/jugador.gd" id="1_2em8b"]
 [ext_resource type="Texture2D" uid="uid://c2gyo1e5yfrq1" path="res://Characters/Knight1_Attack.png" id="2_uv1on"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dyagc5ned7dxd" path="res://assets/sprites quantum/cors2.png" id="10_2gaix"]
 [ext_resource type="Texture2D" uid="uid://bs0isbvuru1hx" path="res://assets/sprites quantum/cors.png" id="11_4rycc"]
 [ext_resource type="Script" path="res://scenes/player/AIController2D.gd" id="12_i5esr"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="13_wrc1v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwi2s"]
 atlas = ExtResource("2_uv1on")
@@ -1318,6 +1319,10 @@ centered = false
 
 [node name="AIController2D" type="Node2D" parent="."]
 script = ExtResource("12_i5esr")
+
+[node name="RaycastSensor2D" type="Node2D" parent="."]
+script = ExtResource("13_wrc1v")
+collide_with_areas = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_jugador_body_entered"]

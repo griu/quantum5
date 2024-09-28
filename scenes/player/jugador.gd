@@ -17,6 +17,7 @@ var player_position
 @export var enemy_health : float = 3.0
 @export var is_human : bool = true #per activar la IA
 @onready var ai_controller_2d: Node2D = $AIController2D
+@onready var raycast_sensor: RaycastSensor2D = $"RaycastSensor2D"
 
 
 
@@ -30,7 +31,6 @@ func _on_area_door_1_body_entered(_body):
 	position = Vector2(1024.0, 576.0)
 	if "door_1" in Global.keys_founded:
 		ai_controller_2d.reward += 1.0
-		ai_controller_2d.reset()
 	else:
 		ai_controller_2d.reward -= 1.0
 
@@ -56,13 +56,14 @@ func _on_area_2d_2_body_entered(_body):
 			$AnimatedSprite2D.play("death")
 			await $Aud_hit.finished
 			$AnimatedSprite2D.play("death")
-			$Aud_gameover.play()
-			await $Aud_gameover.finished
+			#$Aud_gameover.play()
+			#await $Aud_gameover.finished
 			Global.reset_game = true
 			game_over = false
 			$AnimatedSprite2D.stop()
 			player_health = 3
 			position = Vector2(616, 488)
+			ai_controller_2d.reset()
 			
 			#get_tree().reload_current_scene()
 		print("el jugador té " + str(player_health) + (" vides" if player_health > 1 else " vida"))
@@ -87,6 +88,7 @@ func _on_area_jugador_body_entered(_body):
 
 func _ready():
 	ai_controller_2d.init(self)
+	raycast_sensor.activate()
 	$AnimatedSprite2D.play("idle_down")
 	last_move = "down"
 	#position = initial_player_position
@@ -100,7 +102,7 @@ func _ready():
 func _physics_process(delta):
 	var movement := Vector2() #moviment 2d
 	if game_over == false:
-		if is_human: 
+		if ai_controller_2d.heuristic == "human":
 			if not is_atacking: 
 				#es defineix en quina direcció es el moviment
 				if Input.is_action_pressed("right") and Input.is_action_pressed("down"):

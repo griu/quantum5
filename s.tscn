@@ -28,9 +28,6 @@ scale = Vector2(3, 3)
 player = NodePath("../jugador")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" parent="enemy" index="0"]
-process_mode = 4
-
 [connection signal="body_entered" from="door_1/area_door" to="jugador" method="_on_area_door_body_entered"]
 [connection signal="body_entered" from="jugador/Area2D" to="door_1" method="_on_area_2d_body_entered"]
 

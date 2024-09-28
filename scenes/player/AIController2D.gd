@@ -6,6 +6,8 @@ var move = Vector2.ZERO
 @onready var key_1: Node2D = $"../../key_1"
 @onready var door_1: StaticBody2D = $"../../door_1"
 @onready var enemy: CharacterBody2D = $"../../enemy"
+@onready var TileMap_random: TileMap = $"../../TileMap_random"
+@onready var raycast_sensor = $"RayCastSensor2D"
 
 
 
@@ -14,8 +16,7 @@ func get_obs() -> Dictionary:
 		jugador.position.x,
 		jugador.position.y,]
 		
-	if "door_1" not in Global.keys_founded:
-#	if key_1 in get_tree().get_nodes_in_group("key")
+	if "door_1" not in Global.keys_founded and key_1 in get_tree().get_nodes_in_group("key"):
 		obs += [ 
 			key_1.position.	x,
 			key_1.position.y, 
@@ -36,6 +37,9 @@ func get_obs() -> Dictionary:
 	]
 	else:
 		obs += [ 0, 0,]	
+	#obs += [ 
+	obs.append_array(jugador.raycast_sensor.get_observation())
+
 	print(obs)
 	print(self.reward)
 	return {"obs" :obs}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ujej600p1ba"]
+[gd_scene load_steps=10 format=3 uid="uid://4ujej600p1ba"]
 
 [ext_resource type="Script" path="res://scenes/others/main.gd" id="1_gt5qc"]
 [ext_resource type="PackedScene" uid="uid://bkpbbsxksb60l" path="res://scenes/map/tile_map.tscn" id="1_ogq0u"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://p0tcifvas40g" path="res://scenes/player/jugador2.0.tscn" id="5_4wojw"]
 [ext_resource type="PackedScene" uid="uid://5pr7xqxstlqm" path="res://scenes/enemy/enemy.tscn" id="6_wem77"]
 [ext_resource type="Script" path="res://scenes/main/fps.gd" id="7_eg8dq"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="9_gw2ah"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gt5qc")
@@ -27,6 +28,9 @@ position = Vector2(-88, -96)
 
 [node name="jugador" parent="." instance=ExtResource("5_4wojw")]
 position = Vector2(616, 488)
+
+[node name="AIController2D" parent="jugador" index="8"]
+control_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="jugador"]
 position = Vector2(7.62939e-06, -3.05176e-05)
@@ -56,6 +60,9 @@ text = "120
 position = Vector2(536, 224)
 scale = Vector2(3, 3)
 metadata/_edit_group_ = true
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("9_gw2ah")
 
 [connection signal="body_entered" from="door_1/area_door" to="jugador" method="_on_area_door_body_entered"]
 [connection signal="body_entered" from="jugador/Area2D" to="door_1" method="_on_area_2d_body_entered"]
