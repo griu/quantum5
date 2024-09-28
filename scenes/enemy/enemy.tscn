@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://5pr7xqxstlqm"]
+[gd_scene load_steps=14 format=3 uid="uid://5pr7xqxstlqm"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_f5okv"]
+[ext_resource type="Texture2D" uid="uid://4wgdl6ue44u2" path="res://assets/sprites quantum/New Piskel (21).png" id="2_r6man"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wk6w"]
 radius = 4.8
@@ -13,6 +14,14 @@ load_path = "res://.godot/imported/skeleton2_v2_4.png-0ee476c2701e553db322c3e754
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ucyp8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r6man")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("CompressedTexture2D_3lkut")
@@ -128,7 +137,6 @@ shape = SubResource("CircleShape2D_4wk6w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ucyp8")
-frame_progress = 0.0530271
 
 [node name="Area2D" type="Area2D" parent="."]
 

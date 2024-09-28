@@ -37,11 +37,15 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 	
 	if enemy_health <= 0 and not Global.reset_game:
-		$AnimationPlayer.play("death")
+		get_node("CollisionShape2D").disabled = true
+		$AnimatedSprite2D.play("death")
+		#$AnimationPlayer.play("death")
 	
 	if Global.reset_game == true:
 		enemy_health = 3
-		$AnimationPlayer.stop()
+		get_node("CollisionShape2D").disabled = false
+		$AnimatedSprite2D.play("default")
+		#$AnimationPlayer.stop()
 		position = Vector2(539, 224)
 		#position = initial_enemy_position
 

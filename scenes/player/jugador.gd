@@ -48,9 +48,10 @@ func _on_area_2d_2_body_entered(_body):
 	if _body.is_in_group("enemy") and not _body.disabled_enemy:
 		$Aud_hit.play()
 		player_health -= 1
-		$AnimationPlayer.play("hit_2")
+		$AnimationPlayer_hit.play("hit")
 		if player_health <= 0:
 			Global.random()
+			$AnimationPlayer_hit.play("RESET")
 			$AnimationPlayer.play("RESET")
 			game_over = true
 			$AnimatedSprite2D.play("death")

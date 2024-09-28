@@ -26,6 +26,11 @@ metadata/_edit_group_ = true
 [node name="key_1" parent="." groups=["key"] instance=ExtResource("4_827li")]
 position = Vector2(-88, -96)
 
+[node name="enemy" parent="." instance=ExtResource("6_wem77")]
+position = Vector2(536, 224)
+scale = Vector2(3, 3)
+metadata/_edit_group_ = true
+
 [node name="jugador" parent="." instance=ExtResource("5_4wojw")]
 position = Vector2(616, 488)
 
@@ -56,11 +61,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "120
 "
 
-[node name="enemy" parent="." instance=ExtResource("6_wem77")]
-position = Vector2(536, 224)
-scale = Vector2(3, 3)
-metadata/_edit_group_ = true
-
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("9_gw2ah")
 
@@ -69,5 +69,5 @@ script = ExtResource("9_gw2ah")
 
 [editable path="door_1"]
 [editable path="key_1"]
-[editable path="jugador"]
 [editable path="enemy"]
+[editable path="jugador"]
