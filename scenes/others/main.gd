@@ -17,5 +17,5 @@ func spawn():
 func _physics_process(delta):
 	if Global.random_spwan_key:
 		spawn()
-		
+
 

@@ -4,6 +4,7 @@ var keys_founded = []
 var is_open_door = []
 var enemys = {}
 var reset_game : bool = false
+var enemy_died : bool = false
 #var spawn_key : bool = false
 var random_spwan_key : bool = false
 var map_generation : bool = false
@@ -32,11 +33,12 @@ func random_generation():
 	
 
 func _process(_delta):
-	if reset_game == true:
+	if reset_game:
 		print("reset")
 		keys_founded.clear()
 		is_open_door.clear()
 		enemys = {}
+		enemy_died = true
 		random_generation()
 		#spawn_key = true
 		reset_game = false
