@@ -18,6 +18,6 @@ func generate():
 				Global.map_generation = false
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.map_generation:
 		generate()

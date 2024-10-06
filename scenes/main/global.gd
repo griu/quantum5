@@ -4,6 +4,7 @@ var keys_founded = []
 var is_open_door = []
 var enemys = {}
 var reset_game : bool = false
+var ind_key_founded : bool = false
 var enemy_died : bool = false
 #var spawn_key : bool = false
 var random_spwan_key : bool = false
@@ -39,8 +40,13 @@ func _process(_delta):
 		is_open_door.clear()
 		enemys = {}
 		enemy_died = true
+		# map_generation i eandom spawn key
 		random_generation()
 		#spawn_key = true
 		reset_game = false
 		#get_tree().reload_current_scene()
 		
+	if ind_key_founded:
+		print("key founded")
+		ind_key_founded = false
+

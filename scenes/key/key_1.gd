@@ -12,10 +12,11 @@ func _ready():
 func _on_area_key_body_entered(_body):
 	if _body.is_in_group("jugador"):
 		Global.keys_founded.append(door_name)
+		Global.ind_key_founded = true
 		queue_free()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.reset_game:
 		queue_free()
 

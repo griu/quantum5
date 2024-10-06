@@ -14,7 +14,7 @@ func spawn():
 		add_child(spawn_key) 
 		Global.random_spwan_key = false
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.random_spwan_key:
 		spawn()
 

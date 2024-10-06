@@ -27,10 +27,15 @@ Global="*res://scenes/main/global.gd"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="quantum"
+
+[editor]
+
+movie_writer/disable_vsync=true
 
 [editor_plugins]
 

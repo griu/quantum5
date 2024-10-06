@@ -34,8 +34,8 @@ metadata/_edit_group_ = true
 [node name="jugador" parent="." instance=ExtResource("5_4wojw")]
 position = Vector2(616, 488)
 
-[node name="AIController2D" parent="jugador" index="8"]
-control_mode = 1
+[node name="AIController2D" parent="jugador" index="8" groups=["AGENT"]]
+reset_after = 20000
 
 [node name="Camera2D" type="Camera2D" parent="jugador"]
 position = Vector2(7.62939e-06, -3.05176e-05)
@@ -63,9 +63,7 @@ text = "120
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("9_gw2ah")
-
-[connection signal="body_entered" from="door_1/area_door" to="jugador" method="_on_area_door_body_entered"]
-[connection signal="body_entered" from="jugador/Area2D" to="door_1" method="_on_area_2d_body_entered"]
+control_mode = 0
 
 [editable path="door_1"]
 [editable path="key_1"]
