@@ -61,9 +61,11 @@ func _on_area_2d_2_body_entered(_body):
 			#await $Aud_gameover.finished
 			Global.reset_game = true
 			game_over = false
+			is_atacking = false
 			$AnimatedSprite2D.stop()
 			player_health = 3
 			position = Vector2(616, 488)
+			$AnimatedSprite2D.play("idle_down")
 			ai_controller_2d.reset()
 			
 			#get_tree().reload_current_scene()
